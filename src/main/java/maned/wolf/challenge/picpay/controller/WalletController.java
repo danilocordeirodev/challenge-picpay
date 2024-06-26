@@ -1,5 +1,6 @@
 package maned.wolf.challenge.picpay.controller;
 
+import jakarta.validation.Valid;
 import maned.wolf.challenge.picpay.controller.dto.CreateWalletRequestDTO;
 import maned.wolf.challenge.picpay.entity.Wallet;
 import maned.wolf.challenge.picpay.service.WalletService;
@@ -17,7 +18,7 @@ public class WalletController {
     }
 
     @PostMapping("/wallets")
-    public ResponseEntity<Wallet> createWallet(@RequestBody CreateWalletRequestDTO requestDTO) {
+    public ResponseEntity<Wallet> createWallet(@RequestBody @Valid CreateWalletRequestDTO requestDTO) {
         var wallet = walletService.createWallet(requestDTO);
 
         return ResponseEntity.ok(wallet);
