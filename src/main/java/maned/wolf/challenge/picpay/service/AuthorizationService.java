@@ -1,6 +1,7 @@
 package maned.wolf.challenge.picpay.service;
 
 import maned.wolf.challenge.picpay.client.AuthorizationClient;
+import maned.wolf.challenge.picpay.controller.dto.TransferRequestDTO;
 import maned.wolf.challenge.picpay.entity.Transfer;
 import maned.wolf.challenge.picpay.exception.PicPayException;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ public class AuthorizationService {
         this.authorizationClient = authorizationClient;
     }
 
-    public boolean isAuthorized(Transfer transfer) {
+    public boolean isAuthorized(TransferRequestDTO transfer) {
         var resp = authorizationClient.isAuthorized();
 
         if(resp.getStatusCode().isError()) {
